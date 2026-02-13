@@ -84,7 +84,7 @@ class WordPressQuizPublish extends PublishHandler {
 
         $post_status = WordPressSettingsResolver::getPostStatus($handler_config);
         $post_author = WordPressSettingsResolver::getPostAuthor($handler_config);
-        $post_type = $handler_config['post_type'] ?? 'post';
+        $post_type = $handler_config['post_type'] ?? 'quiz';
 
         if ( empty( $post_type ) ) {
             return $this->errorResponse('Missing required post_type in handler configuration');
