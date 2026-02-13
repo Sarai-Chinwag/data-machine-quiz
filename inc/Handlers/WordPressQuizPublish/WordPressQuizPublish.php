@@ -192,9 +192,7 @@ Use ordered lists for quiz instructions and cooking steps to ensure proper forma
             ],
             'quizType' => [
                 'type' => 'string',
-                'enum' => ['multiple-choice', 'true-false', 'personality'],
-                'default' => 'multiple-choice',
-                'description' => 'Type of quiz (multiple-choice, true-false, or personality)'
+                'description' => 'Type of quiz: "multiple-choice" (default), "true-false", or "personality"'
             ],
             'questions' => [
                 'type' => 'array',
@@ -202,34 +200,32 @@ Use ordered lists for quiz instructions and cooking steps to ensure proper forma
                 'items' => [
                     'type' => 'object',
                     'properties' => [
-                        'question' => ['type' => 'string', 'required' => true],
-                        'options' => ['type' => 'array', 'items' => ['type' => 'string'], 'required' => true, 'minItems' => 2, 'maxItems' => 6],
-                        'correctAnswer' => ['type' => 'integer', 'required' => true, 'minimum' => 0, 'description' => '0-based index of correct answer'],
+                        'question' => ['type' => 'string', 'description' => 'The question text (required)'],
+                        'options' => ['type' => 'array', 'items' => ['type' => 'string'], 'description' => 'Array of 2-6 answer choices (required)'],
+                        'correctAnswer' => ['type' => 'integer', 'description' => '0-based index of the correct answer (required)'],
                         'explanation' => ['type' => 'string', 'description' => 'Explanation shown after answering'],
                         'imageUrl' => ['type' => 'string', 'description' => 'Optional image URL for the question']
                     ]
                 ],
-                'description' => 'Array of question objects with question text, answer options, correct answer index, and optional explanation/image'
+                'description' => 'Array of question objects. Each must have: question (string), options (array of strings), correctAnswer (integer, 0-based index). Optional: explanation, imageUrl.'
             ],
             'passingScore' => [
                 'type' => 'integer',
-                'default' => 70,
-                'description' => 'Percentage score needed to pass the quiz'
+                'description' => 'Percentage score needed to pass (default: 70)'
             ],
             'showExplanations' => [
                 'type' => 'boolean',
-                'default' => true,
-                'description' => 'Whether to show explanations after each answer'
+                'description' => 'Whether to show explanations after each answer (default: true)'
             ],
             'resultDescriptions' => [
                 'type' => 'object',
                 'properties' => [
-                    'excellent' => ['type' => 'string', 'default' => 'You really know your stuff!'],
-                    'good' => ['type' => 'string', 'default' => 'Great job!'],
-                    'average' => ['type' => 'string', 'default' => 'Not bad!'],
-                    'needsWork' => ['type' => 'string', 'default' => 'Keep learning!']
+                    'excellent' => ['type' => 'string', 'description' => 'Message for 90-100% score'],
+                    'good' => ['type' => 'string', 'description' => 'Message for 70-89% score'],
+                    'average' => ['type' => 'string', 'description' => 'Message for 50-69% score'],
+                    'needsWork' => ['type' => 'string', 'description' => 'Message for 0-49% score']
                 ],
-                'description' => 'Score range descriptions for results (90-100%, 70-89%, 50-69%, 0-49%)'
+                'description' => 'Score range descriptions for quiz results'
             ],
             // job_id is injected automatically by ToolParameters::buildParameters from the pipeline payload.
             // Do NOT list it as a tool parameter — the AI will hallucinate a fake value that overrides the real one.
