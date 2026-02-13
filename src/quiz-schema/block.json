@@ -1,0 +1,64 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "data-machine-quiz/quiz-schema",
+	"title": "Quiz Schema",
+	"category": "common",
+	"icon": "welcome-learn-more",
+	"description": "Interactive quiz with Schema.org structured data",
+	"textdomain": "data-machine-quiz",
+	"editorScript": "file:./index.js",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css",
+	"supports": {
+		"html": false,
+		"align": false
+	},
+	"attributes": {
+		"quizTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"default": ""
+		},
+		"quizType": {
+			"type": "string",
+			"default": "multiple-choice",
+			"enum": ["multiple-choice", "true-false", "personality"]
+		},
+		"questions": {
+			"type": "array",
+			"default": []
+		},
+		"passingScore": {
+			"type": "number",
+			"default": 70
+		},
+		"showExplanations": {
+			"type": "boolean",
+			"default": true
+		},
+		"resultDescriptions": {
+			"type": "object",
+			"default": {
+				"excellent": "You really know your stuff!",
+				"good": "Great job!",
+				"average": "Not bad!",
+				"needsWork": "Keep learning!"
+			}
+		},
+		"author": {
+			"type": "object",
+			"default": {
+				"name": "",
+				"url": ""
+			}
+		},
+		"datePublished": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

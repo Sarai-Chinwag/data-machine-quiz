@@ -1,0 +1,43 @@
+{
+  "name": "data-machine-quiz",
+  "version": "1.0.0",
+  "description": "Data Machine Quiz WordPress plugin with Schema.org Quiz Gutenberg block",
+  "main": "index.js",
+  "scripts": {
+    "build": "WP_EXPERIMENTAL_MODULES=true wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style",
+    "format": "wp-scripts format",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "block",
+    "quiz",
+    "schema.org"
+  ],
+  "author": "Chris Huber",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.7.0",
+    "npm-force-resolutions": "^0.0.10"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^14.7.0",
+    "@wordpress/blocks": "^14.7.0",
+    "@wordpress/components": "^30.7.0",
+    "@wordpress/element": "^6.7.0",
+    "@wordpress/i18n": "^6.7.0",
+    "@wordpress/interactivity": "^1.0.0"
+  },
+  "overrides": {
+    "@babel/runtime": "^7.28.4",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "resolutions": {
+    "@babel/runtime": "^7.28.4",
+    "webpack-dev-server": "^5.2.2"
+  }
+}

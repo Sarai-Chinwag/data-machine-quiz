@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Development
+.DS_Store
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+Desktop.ini
