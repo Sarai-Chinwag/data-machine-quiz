@@ -79,4 +79,16 @@ function data_machine_quiz_deactivate() {
 register_activation_hook( __FILE__, 'data_machine_quiz_activate' );
 register_deactivation_hook( __FILE__, 'data_machine_quiz_deactivate' );
 
-add_action( 'init', 'data_machine_quiz_init' );
+// Defer dependency check to plugins_loaded (all plugins are loaded by then).
+// This prevents load-order issues where this plugin loads before data-machine.
+add_action( 'plugins_loaded', function () {
+    if ( ! class_exists( 'DataMachine\\Core\\Steps\\Publish\\Handlers\\PublishHandler' ) ) {
+        add_action( 'admin_notices', function () {
+            if ( current_user_can( 'activate_plugins' ) ) {
+                echo '<div class="notice notice-error"><p>' . esc_html__( 'Data Machine core plugin is not active. Data Machine Quiz requires the Data Machine core plugin to function. Please install/activate "data-machine".', 'data-machine-quiz' ) . '</p></div>';
+            }
+        } );
+        return;
+    }
+    add_action( 'init', 'data_machine_quiz_init' );
+} );
