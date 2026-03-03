@@ -130,7 +130,7 @@ class WordPressQuizPublish extends PublishHandler {
             return $this->errorResponse($error_msg);
         }
 
-        $this->storePostTrackingMeta( $post_id, $handler_config );
+        // Post tracking is handled automatically by base PublishHandler::handle_tool_call().
 
         // Attach featured image if available and configured
         WordPressPublishHelper::attachImageToPost($post_id, $engine->getImagePath(), $handler_config);
